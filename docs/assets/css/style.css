@@ -416,6 +416,7 @@ tr:hover {
     .handbook-grid {
         display: flex;
         flex-direction: column;
+        align-items: stretch;
         gap: 2rem;
     }
 

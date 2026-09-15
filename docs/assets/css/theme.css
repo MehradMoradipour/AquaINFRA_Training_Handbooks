@@ -1190,6 +1190,8 @@ details.knowledge-check .answer-content {
 }
 
 .diagram--svg .figure-scroll {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 14px;
