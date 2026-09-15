@@ -36,3 +36,8 @@ assets/images/
 
 # Local AI config
 CLAUDE.md
+
+# Source docx extraction working files (keep the original .docx outside the repo)
+unpacked_docx/
+image_mapping.txt
+extracted_usecases.txt
