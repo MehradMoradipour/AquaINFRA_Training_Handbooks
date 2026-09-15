@@ -1181,7 +1181,85 @@ details.knowledge-check .answer-content {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+/* =========================================
+   Inline SVG Diagram Figures (dark canvas)
+   ========================================= */
 
+.diagram--svg {
+    margin: 2.25rem 0 2.5rem 0;
+}
 
+.diagram--svg .figure-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+}
 
-
+.diagram--svg svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 14px;
+    background: var(--fig-canvas);
+    box-shadow: 0 10px 24px rgba(7, 6, 8, 0.18);
+}
+
+.diagram--svg figcaption {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.7rem;
+    text-align: center;
+}
+
+/* Shared type ramp inside diagrams. Sizes are viewBox units. */
+.diagram--svg text {
+    font-family: var(--font-system, sans-serif);
+}
+
+.fig-title {
+    font-size: 19px;
+    font-weight: 700;
+    fill: var(--fig-ink);
+}
+
+.fig-label {
+    font-size: 15px;
+    font-weight: 600;
+    fill: var(--fig-ink);
+}
+
+.fig-sub {
+    font-size: 13px;
+    fill: var(--fig-ink-muted);
+}
+
+.fig-note {
+    font-size: 13px;
+    font-style: italic;
+    fill: var(--fig-ink-dim);
+}
+
+/* Accent variants for labels that belong to a coloured element */
+.fig-accent-sky { fill: #7dd3fc; }
+.fig-accent-emerald { fill: #6ee7b7; }
+.fig-accent-amber { fill: #fcd34d; }
+.fig-accent-rose { fill: #fda4af; }
+.fig-accent-lime { fill: #bef264; }
+.fig-accent-violet { fill: #d8b4fe; }
+.fig-accent-ink { fill: var(--fig-ink); }
+
+/* On phones, scroll the diagram instead of shrinking its labels to nothing */
+@media (max-width: 640px) {
+    .diagram--svg svg {
+        min-width: 560px;
+    }
+
+    .diagram--svg figcaption::after {
+        content: "Swipe the diagram sideways to see all of it.";
+        display: block;
+        margin-top: 0.35rem;
+        font-style: italic;
+        opacity: 0.8;
+    }
+}

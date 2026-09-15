@@ -19,97 +19,94 @@ The Elbe Estuary stretches over 140 kilometers from the tidal weir at Geesthacht
 
 ## The River-to-Sea Continuum
 
-<div style="margin: 2.5rem 0; text-align: center;">
-<svg viewBox="0 0 920 420" width="100%" style="max-width: 920px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15)); border-radius: 12px; background: #0f172a;">
+<figure class="diagram diagram--svg">
+<div class="figure-scroll">
+<svg viewBox="0 0 920 430" role="img" aria-labelledby="elbe1-title elbe1-desc">
+  <title id="elbe1-title">Hydrodynamic and ecological zones of the Elbe Estuary</title>
+  <desc id="elbe1-desc">Four zones along the estuary from upstream to sea: freshwater discharge at the Geesthacht weir, the Hamburg port zone with its summer oxygen deficit, the estuarine turbidity maximum where suspended matter is trapped, and the German Bight outflow. Salinity rises from 0.1 to 32 practical salinity units along the same axis.</desc>
+
   <defs>
-    <!-- River & Sea Gradients -->
-    <linearGradient id="elbeRiverGrad" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="elbeRiver" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#10b981"/>
       <stop offset="35%" stop-color="#38bdf8"/>
       <stop offset="70%" stop-color="#0284c7"/>
       <stop offset="100%" stop-color="#0369a1"/>
     </linearGradient>
-    <linearGradient id="oxygenGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.7"/>
+    <linearGradient id="elbeOxygen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.75"/>
       <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.1"/>
     </linearGradient>
-    <linearGradient id="etmGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
-      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.2"/>
+    <linearGradient id="elbeEtm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.15"/>
     </linearGradient>
   </defs>
 
-  <!-- Title Banner -->
-  <text x="460" y="38" font-family="sans-serif" font-size="17" font-weight="bold" fill="#f8fafc" text-anchor="middle">Elbe Estuary: Hydrodynamic &amp; Ecological Zones</text>
+  <text x="460" y="36" class="fig-title" text-anchor="middle">Elbe Estuary: hydrodynamic and ecological zones</text>
 
-  <!-- Estuary Water Body Track -->
-  <path d="M 60 210 Q 280 180 500 215 T 860 220" fill="none" stroke="url(#elbeRiverGrad)" stroke-width="50" stroke-linecap="round"/>
+  <!-- Estuary water body -->
+  <path d="M 60 212 Q 280 182 500 217 T 860 222" fill="none" stroke="url(#elbeRiver)" stroke-width="50" stroke-linecap="round"/>
+  <ellipse cx="320" cy="200" rx="55" ry="22" fill="url(#elbeOxygen)"/>
+  <ellipse cx="580" cy="218" rx="65" ry="20" fill="url(#elbeEtm)"/>
 
-  <!-- Oxygen & ETM Overlays on Water Body -->
-  <ellipse cx="320" cy="198" rx="55" ry="22" fill="url(#oxygenGrad)"/>
-  <ellipse cx="580" cy="216" rx="65" ry="20" fill="url(#etmGrad)"/>
-
-  <!-- Zone 1: Freshwater Discharge -->
-  <g transform="translate(100, 75)">
-    <rect x="-85" y="0" width="170" height="55" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
-    <text x="0" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#34d399" text-anchor="middle">Freshwater Discharge</text>
-    <text x="0" y="42" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Geesthacht Weir (km 586)</text>
-    <line x1="0" y1="55" x2="0" y2="120" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Zone 1 -->
+  <g transform="translate(100, 72)">
+    <rect x="-90" y="0" width="180" height="60" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="0" y="25" class="fig-label fig-accent-emerald" text-anchor="middle">Freshwater discharge</text>
+    <text x="0" y="46" class="fig-sub" text-anchor="middle">Geesthacht weir, km 586</text>
+    <line x1="0" y1="60" x2="0" y2="122" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
   </g>
 
-  <!-- Zone 2: Hamburg Harbor & Hypoxia -->
-  <g transform="translate(320, 75)">
-    <rect x="-90" y="0" width="180" height="55" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
-    <text x="0" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#fda4af" text-anchor="middle">Hamburg Port Zone</text>
-    <text x="0" y="42" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">Oxygen Deficit (&lt; 3 mg/L O₂)</text>
-    <line x1="0" y1="55" x2="0" y2="105" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Zone 2 -->
+  <g transform="translate(320, 72)">
+    <rect x="-100" y="0" width="200" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="2"/>
+    <text x="0" y="25" class="fig-label fig-accent-rose" text-anchor="middle">Hamburg port zone</text>
+    <text x="0" y="46" class="fig-sub" text-anchor="middle">Oxygen deficit below 3 mg/L</text>
+    <line x1="0" y1="60" x2="0" y2="106" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3 3"/>
   </g>
 
-  <!-- Zone 3: Estuarine Turbidity Maximum (ETM) -->
-  <g transform="translate(580, 75)">
-    <rect x="-95" y="0" width="190" height="55" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
-    <text x="0" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#fde047" text-anchor="middle">Turbidity Maximum (ETM)</text>
-    <text x="0" y="42" font-family="sans-serif" font-size="11" fill="#cbd5e1" text-anchor="middle">Suspended Matter Trapping</text>
-    <line x1="0" y1="55" x2="0" y2="120" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Zone 3 -->
+  <g transform="translate(580, 72)">
+    <rect x="-100" y="0" width="200" height="60" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="0" y="25" class="fig-label fig-accent-amber" text-anchor="middle">Turbidity maximum</text>
+    <text x="0" y="46" class="fig-sub" text-anchor="middle">Suspended matter trapping</text>
+    <line x1="0" y1="60" x2="0" y2="124" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3"/>
   </g>
 
-  <!-- Zone 4: German Bight Coastal Water -->
-  <g transform="translate(810, 75)">
-    <rect x="-80" y="0" width="160" height="55" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
-    <text x="0" y="23" font-family="sans-serif" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">German Bight</text>
-    <text x="0" y="42" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">North Sea Plume Outflow</text>
-    <line x1="0" y1="55" x2="0" y2="125" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <!-- Zone 4 -->
+  <g transform="translate(812, 72)">
+    <rect x="-88" y="0" width="176" height="60" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="0" y="25" class="fig-label fig-accent-sky" text-anchor="middle">German Bight</text>
+    <text x="0" y="46" class="fig-sub" text-anchor="middle">North Sea plume outflow</text>
+    <line x1="0" y1="60" x2="0" y2="128" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="3 3"/>
   </g>
 
-  <!-- Node Dots on River Track -->
-  <circle cx="100" cy="198" r="7" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
-  <circle cx="320" cy="198" r="7" fill="#f43f5e" stroke="#ffffff" stroke-width="2"/>
-  <circle cx="580" cy="216" r="7" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
-  <circle cx="810" cy="220" r="7" fill="#0ea5e9" stroke="#ffffff" stroke-width="2"/>
+  <!-- Nodes on the water body -->
+  <circle cx="100" cy="200" r="7" fill="#10b981" stroke="#0f172a" stroke-width="3"/>
+  <circle cx="320" cy="200" r="7" fill="#f43f5e" stroke="#0f172a" stroke-width="3"/>
+  <circle cx="580" cy="218" r="7" fill="#f59e0b" stroke="#0f172a" stroke-width="3"/>
+  <circle cx="812" cy="222" r="7" fill="#0ea5e9" stroke="#0f172a" stroke-width="3"/>
 
-  <!-- Salinity Gradient Vector & Label -->
-  <path d="M 60 280 L 860 280" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
-  <polygon points="860,275 870,280 860,285" fill="#64748b"/>
-  <text x="460" y="305" font-family="sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Salinity Gradient: 0.1 PSU (Freshwater) ➔ 32.0 PSU (Marine Water)</text>
+  <!-- Salinity axis -->
+  <path d="M 60 288 L 856 288" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 4"/>
+  <polygon points="856,282 870,288 856,294" fill="#475569"/>
+  <text x="460" y="316" class="fig-label" text-anchor="middle">Salinity gradient: 0.1 PSU freshwater to 32 PSU marine water</text>
 
-  <!-- Legend Box -->
-  <rect x="130" y="340" width="660" height="50" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-  <circle cx="160" cy="365" r="6" fill="#10b981"/>
-  <text x="173" y="369" font-family="sans-serif" font-size="12" fill="#cbd5e1">River Discharges</text>
-  
-  <circle cx="310" cy="365" r="6" fill="#f43f5e"/>
-  <text x="323" y="369" font-family="sans-serif" font-size="12" fill="#cbd5e1">Hypoxia Risk Zone</text>
-  
-  <circle cx="480" cy="365" r="6" fill="#f59e0b"/>
-  <text x="493" y="369" font-family="sans-serif" font-size="12" fill="#cbd5e1">ETM Particle Trapping</text>
-  
-  <circle cx="670" cy="365" r="6" fill="#0ea5e9"/>
-  <text x="683" y="369" font-family="sans-serif" font-size="12" fill="#cbd5e1">Marine Outflow</text>
-
+  <!-- Legend -->
+  <rect x="120" y="346" width="680" height="52" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <circle cx="150" cy="372" r="6" fill="#10b981"/>
+  <text x="164" y="377" class="fig-sub">River discharge</text>
+  <circle cx="312" cy="372" r="6" fill="#f43f5e"/>
+  <text x="326" y="377" class="fig-sub">Hypoxia risk zone</text>
+  <circle cx="490" cy="372" r="6" fill="#f59e0b"/>
+  <text x="504" y="377" class="fig-sub">ETM particle trapping</text>
+  <circle cx="686" cy="372" r="6" fill="#0ea5e9"/>
+  <text x="700" y="377" class="fig-sub">Marine outflow</text>
 </svg>
-<p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Figure 1: Schematic of the Elbe Estuary showing the transition from freshwater discharge to the oxygen deficit zone in Hamburg harbor, the Turbidity Maximum, and German Bight coastal waters.</p>
 </div>
+<figcaption>Figure 1: Schematic of the Elbe Estuary showing the transition from freshwater discharge to the oxygen deficit zone in Hamburg harbour, the Turbidity Maximum, and German Bight coastal waters.</figcaption>
+</figure>
 
 ---
 

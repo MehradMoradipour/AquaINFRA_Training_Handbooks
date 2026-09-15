@@ -16,61 +16,73 @@ The Vantaanjoki River flows directly into the Gulf of Finland at Helsinki. Cover
 
 During snowmelt seasons and flash floods, the turbid water from the river spreads far into the Gulf, visibly altering the colour and ecology of the coastal surface waters. To monitor this dynamic system, the AquaINFRA project combines multiple layers of observation.
 
-<div style="margin: 2.5rem 0; text-align: center;">
-<svg viewBox="0 0 800 300" width="100%" style="max-width: 800px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); border-radius: 12px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+<figure class="diagram diagram--svg">
+<div class="figure-scroll">
+<svg viewBox="0 0 800 340" role="img" aria-labelledby="gof-title gof-desc">
+  <title id="gof-title">Source-to-sea observation chain, Vantaanjoki to the Gulf of Finland</title>
+  <desc id="gof-desc">Three observation layers along one continuum: CORINE land-use data over the catchment, in-river sensors measuring discharge and water quality, and FerryBox transects sampling coastal gradients in the Gulf, with Earth observation covering the whole chain from above.</desc>
+
   <defs>
-    <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3b82f6"/>
+    <linearGradient id="gofRiver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
       <stop offset="100%" stop-color="#0ea5e9"/>
     </linearGradient>
-    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="gofSea" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#0284c7"/>
-      <stop offset="100%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#075985"/>
     </linearGradient>
   </defs>
-  
-  <!-- Land / Catchment -->
-  <path d="M0 150 Q 150 120 300 180 T 500 200 L 500 300 L 0 300 Z" fill="#334155" opacity="0.8"/>
-  <path d="M0 170 Q 150 140 300 190 T 500 220 L 500 300 L 0 300 Z" fill="#1e293b"/>
-  
-  <!-- River -->
-  <path d="M 0 200 Q 150 180 250 210 T 500 240 L 500 260 Q 300 230 150 200 Z" fill="url(#riverGrad)"/>
-  
-  <!-- Sea -->
-  <path d="M 500 200 C 600 200 700 180 800 180 L 800 300 L 500 300 Z" fill="url(#seaGrad)"/>
-  
-  <!-- Nodes & Labels -->
-  <g transform="translate(100, 150)">
-    <circle cx="0" cy="0" r="15" fill="#f59e0b" stroke="#fff" stroke-width="3"/>
-    <text x="0" y="-25" fill="#e2e8f0" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Catchment</text>
-    <text x="0" y="30" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">CORINE Land-use</text>
-  </g>
-  
-  <g transform="translate(350, 180)">
-    <circle cx="0" cy="0" r="15" fill="#10b981" stroke="#fff" stroke-width="3"/>
-    <text x="0" y="-25" fill="#e2e8f0" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">River Sensors</text>
-    <text x="0" y="30" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Discharge &amp; Quality</text>
-  </g>
-  
-  <g transform="translate(650, 220)">
-    <circle cx="0" cy="0" r="15" fill="#6366f1" stroke="#fff" stroke-width="3"/>
-    <text x="0" y="-25" fill="#e2e8f0" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">FerryBox</text>
-    <text x="0" y="30" fill="#94a3b8" font-family="sans-serif" font-size="12" text-anchor="middle">Coastal Gradients</text>
-  </g>
-  
-  <!-- Satellites -->
-  <g transform="translate(550, 70)">
-    <path d="M-20,-10 L20,-10 L20,10 L-20,10 Z" fill="#cbd5e1" opacity="0.9"/>
-    <circle cx="0" cy="0" r="5" fill="#ef4444"/>
-    <line x1="-20" y1="0" x2="-40" y2="0" stroke="#cbd5e1" stroke-width="2"/>
-    <line x1="20" y1="0" x2="40" y2="0" stroke="#cbd5e1" stroke-width="2"/>
-    <text x="0" y="-25" fill="#e2e8f0" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Earth Observation</text>
-    <line x1="0" y1="10" x2="100" y2="150" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+
+  <text x="400" y="36" class="fig-title" text-anchor="middle">From catchment to coastal sea</text>
+
+  <!-- Catchment relief -->
+  <path d="M0 196 Q 140 164 300 214 T 520 240 L 520 340 L 0 340 Z" fill="#334155"/>
+  <path d="M0 220 Q 150 196 300 236 T 520 262 L 520 340 L 0 340 Z" fill="#1e293b"/>
+
+  <!-- River corridor -->
+  <path d="M 0 236 Q 150 220 280 250 T 520 278 L 520 296 Q 300 268 150 244 T 0 254 Z" fill="url(#gofRiver)"/>
+
+  <!-- Coastal sea -->
+  <path d="M 500 246 C 600 240 700 224 800 224 L 800 340 L 500 340 Z" fill="url(#gofSea)"/>
+
+  <!-- Earth observation -->
+  <g transform="translate(560, 92)">
+    <rect x="-24" y="-12" width="48" height="24" rx="4" fill="#e2e8f0"/>
+    <rect x="-64" y="-4" width="38" height="8" fill="#3b82f6"/>
+    <rect x="26" y="-4" width="38" height="8" fill="#3b82f6"/>
+    <circle cx="0" cy="0" r="5" fill="#f87171"/>
+    <text x="0" y="-26" class="fig-label" text-anchor="middle">Earth observation</text>
+    <path d="M -10 14 L -230 108" stroke="#f87171" stroke-width="2" stroke-dasharray="6 5" opacity="0.55"/>
+    <path d="M 6 14 L 92 122" stroke="#f87171" stroke-width="2" stroke-dasharray="6 5" opacity="0.55"/>
   </g>
 
+  <!-- Observation nodes -->
+  <g transform="translate(120, 190)">
+    <circle cx="0" cy="0" r="13" fill="#f59e0b" stroke="#0f172a" stroke-width="3"/>
+    <text x="0" y="-26" class="fig-label" text-anchor="middle">Catchment</text>
+    <text x="0" y="34" class="fig-sub" text-anchor="middle">CORINE land use</text>
+  </g>
+
+  <g transform="translate(330, 250)">
+    <circle cx="0" cy="0" r="13" fill="#10b981" stroke="#0f172a" stroke-width="3"/>
+    <text x="0" y="-26" class="fig-label" text-anchor="middle">River sensors</text>
+    <text x="0" y="34" class="fig-sub" text-anchor="middle">Discharge &amp; quality</text>
+  </g>
+
+  <g transform="translate(662, 268)">
+    <circle cx="0" cy="0" r="13" fill="#818cf8" stroke="#0f172a" stroke-width="3"/>
+    <text x="0" y="-26" class="fig-label" text-anchor="middle">FerryBox</text>
+    <text x="0" y="34" class="fig-sub" text-anchor="middle">Coastal gradients</text>
+  </g>
+
+  <!-- Transport direction -->
+  <path d="M 150 316 L 690 316" stroke="#475569" stroke-width="2" stroke-dasharray="7 5"/>
+  <polygon points="690,311 702,316 690,321" fill="#475569"/>
+  <text x="150" y="306" class="fig-note">Material transport, land to sea</text>
 </svg>
-<p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Figure 1: The Source-to-Sea continuum connecting land use, riverine transport, and coastal observation.</p>
 </div>
+<figcaption>Figure 1: The source-to-sea continuum connecting land use, riverine transport, and coastal observation.</figcaption>
+</figure>
 
 ### System Characteristics
 

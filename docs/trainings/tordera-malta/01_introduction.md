@@ -19,73 +19,84 @@ We explore this through two parallel case studies:
 1. **The Tordera River (Spain):** Focusing on surface-level extreme events, specifically how flash floods transport vast quantities of sediment and nutrients into the sea.
 2. **The Maltese Islands (Malta):** Focusing on the hidden subterranean connection, specifically submarine groundwater discharge (SGD) and the threat of saltwater intrusion into fragile coastal aquifers.
 
-<div style="margin: 2.5rem 0; text-align: center;">
-<svg viewBox="0 0 800 400" width="100%" style="max-width: 800px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); border-radius: 12px; background: #f8fafc;">
-  
+<figure class="diagram diagram--svg">
+<div class="figure-scroll">
+<svg viewBox="0 0 860 420" role="img" aria-labelledby="tor-title tor-desc">
+  <title id="tor-title">Two land-sea pathways: Tordera flash floods and Maltese groundwater discharge</title>
+  <desc id="tor-desc">Left panel: the Tordera catchment in Spain, where flash floods move sediment and nutrients over the surface into the sea in short pulses. Right panel: a cross-section of the Maltese carbonate aquifer, where fresh groundwater discharges to the sea underground while saltwater intrudes inland beneath it.</desc>
+
   <defs>
-    <!-- Gradients -->
-    <linearGradient id="torderaRiver" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3b82f6"/>
+    <linearGradient id="torRiver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
       <stop offset="100%" stop-color="#1d4ed8"/>
     </linearGradient>
-    <linearGradient id="maltaSea" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#0ea5e9"/>
-      <stop offset="100%" stop-color="#0284c7"/>
+    <linearGradient id="torSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
     </linearGradient>
-    <!-- Pattern for Aquifer -->
-    <pattern id="aquifer" patternUnits="userSpaceOnUse" width="20" height="20">
-      <circle cx="10" cy="10" r="2" fill="#94a3b8" opacity="0.5"/>
-      <path d="M0,10 L20,10 M10,0 L10,20" stroke="#cbd5e1" stroke-width="0.5" opacity="0.3"/>
+    <pattern id="torAquifer" patternUnits="userSpaceOnUse" width="22" height="22">
+      <rect width="22" height="22" fill="#292524"/>
+      <circle cx="11" cy="11" r="2.2" fill="#78716c"/>
+      <path d="M0,11 L22,11 M11,0 L11,22" stroke="#44403c" stroke-width="0.8"/>
     </pattern>
+    <marker id="torArrowSky" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="torArrowRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f87171"/>
+    </marker>
   </defs>
 
-  <!-- Divider Line -->
-  <line x1="400" y1="20" x2="400" y2="380" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="8,8"/>
+  <!-- Panel divider -->
+  <line x1="430" y1="60" x2="430" y2="396" stroke="#334155" stroke-width="2" stroke-dasharray="8 8"/>
 
-  <!-- LEFT: Tordera (Spain) -->
-  <g transform="translate(0, 0)">
-    <text x="200" y="40" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">Tordera River (Spain)</text>
-    <text x="200" y="60" font-family="sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Surface Flooding &amp; Transport</text>
+  <!-- LEFT: Tordera, surface pathway -->
+  <g>
+    <text x="215" y="40" class="fig-title" text-anchor="middle">Tordera River, Spain</text>
+    <text x="215" y="64" class="fig-sub" text-anchor="middle">Surface pathway: flash floods</text>
 
-    <!-- Mountains / Catchment -->
-    <path d="M 20 200 L 100 120 L 180 200 L 250 150 L 380 250 L 20 250 Z" fill="#94a3b8"/>
-    <path d="M 20 250 Q 200 250 380 350 L 20 350 Z" fill="#64748b"/>
+    <path d="M 20 228 L 108 138 L 190 228 L 262 172 L 400 272 L 20 272 Z" fill="#475569"/>
+    <path d="M 20 272 Q 210 272 400 356 L 20 356 Z" fill="#334155"/>
+    <path d="M 20 356 L 400 356 L 400 396 L 20 396 Z" fill="url(#torSea)"/>
 
-    <!-- Flooding River -->
-    <path d="M 100 120 Q 150 200 250 220 T 380 300 L 380 330 Q 250 250 150 220 T 100 130 Z" fill="url(#torderaRiver)"/>
-    <!-- Flood Plume in Sea -->
-    <path d="M 380 300 Q 320 320 380 380" fill="none" stroke="#2563eb" stroke-width="20" stroke-linecap="round" opacity="0.6"/>
-    
-    <g transform="translate(260, 200)">
-      <circle cx="0" cy="0" r="15" fill="#ef4444" stroke="#fff" stroke-width="3"/>
-      <text x="0" y="-20" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">Flash Flood</text>
+    <path d="M 108 138 Q 158 224 262 244 T 400 320 L 400 348 Q 262 272 158 244 T 108 150 Z" fill="url(#torRiver)"/>
+    <path d="M 392 352 Q 330 372 392 396" fill="none" stroke="#38bdf8" stroke-width="18" stroke-linecap="round" opacity="0.5"/>
+
+    <g transform="translate(268, 222)">
+      <circle cx="0" cy="0" r="13" fill="#ef4444" stroke="#0f172a" stroke-width="3"/>
+      <text x="0" y="-22" class="fig-label fig-accent-rose" text-anchor="middle">Flash flood</text>
     </g>
+    <text x="215" y="386" class="fig-sub" text-anchor="middle">Sediment and nutrient pulse</text>
   </g>
 
-  <!-- RIGHT: Malta -->
-  <g transform="translate(400, 0)">
-    <text x="200" y="40" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle">Maltese Islands</text>
-    <text x="200" y="60" font-family="sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Subterranean Groundwater</text>
+  <!-- RIGHT: Malta, subterranean pathway -->
+  <g transform="translate(430, 0)">
+    <text x="215" y="40" class="fig-title" text-anchor="middle">Maltese Islands</text>
+    <text x="215" y="64" class="fig-sub" text-anchor="middle">Hidden pathway: groundwater</text>
 
-    <!-- Cross Section / Aquifer -->
-    <path d="M 20 150 L 150 150 Q 250 150 380 200 L 380 350 L 20 350 Z" fill="url(#aquifer)"/>
-    <path d="M 20 150 L 150 150 Q 250 150 380 200 L 380 250 Q 250 180 150 180 L 20 180 Z" fill="#10b981" opacity="0.2"/> <!-- Top soil -->
-    
-    <!-- Sea -->
-    <path d="M 250 180 Q 300 180 380 180 L 380 350 Q 250 350 250 180 Z" fill="url(#maltaSea)" opacity="0.8"/>
+    <!-- Carbonate rock body, island and seabed -->
+    <path d="M 30 214 L 190 214 Q 240 214 262 252 L 400 316 L 400 396 L 30 396 Z" fill="url(#torAquifer)"/>
 
-    <!-- Groundwater flow arrow -->
-    <path d="M 80 250 Q 150 250 240 280" fill="none" stroke="#38bdf8" stroke-width="4" marker-end="url(#arrow)"/>
-    <!-- Saltwater intrusion arrow -->
-    <path d="M 350 300 Q 250 300 200 280" fill="none" stroke="#ef4444" stroke-width="4" marker-end="url(#arrow)"/>
+    <!-- Coastal sea filling the space above the seabed -->
+    <path d="M 262 252 L 400 316 L 400 232 L 262 232 Z" fill="url(#torSea)"/>
+    <path d="M 262 232 L 400 232" stroke="#7dd3fc" stroke-width="2" opacity="0.7"/>
+    <path d="M 30 214 L 190 214 Q 240 214 262 252 L 262 272 Q 236 232 190 232 L 30 232 Z" fill="#16a34a" opacity="0.4"/>
 
-    <text x="120" y="240" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0284c7" text-anchor="middle">Fresh Groundwater</text>
-    <text x="280" y="320" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">Saltwater Intrusion</text>
+    <!-- Fresh groundwater moving seaward -->
+    <path d="M 66 300 Q 150 300 236 326" fill="none" stroke="#38bdf8" stroke-width="4" marker-end="url(#torArrowSky)"/>
+    <text x="140" y="286" class="fig-label fig-accent-sky" text-anchor="middle">Fresh groundwater</text>
+
+    <!-- Saltwater wedge pushing inland -->
+    <path d="M 372 350 Q 250 366 176 348" fill="none" stroke="#f87171" stroke-width="4" marker-end="url(#torArrowRose)"/>
+    <text x="268" y="390" class="fig-label fig-accent-rose" text-anchor="middle">Saltwater intrusion</text>
+
+    <text x="120" y="256" class="fig-note" text-anchor="middle">Permeable carbonate rock</text>
+    <text x="336" y="256" class="fig-sub" text-anchor="middle">Coastal sea</text>
   </g>
-
 </svg>
-<p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Figure 3: Conceptual comparison of surface extreme events (Tordera, Spain) and subterranean groundwater dynamics (Malta).</p>
 </div>
+<figcaption>Figure 3: Conceptual comparison of surface extreme events (Tordera, Spain) and subterranean groundwater dynamics (Malta).</figcaption>
+</figure>
 
 <div class="use-case-card" style="margin-bottom: 2rem;">
     <figure style="text-align: center; margin: 0;">
