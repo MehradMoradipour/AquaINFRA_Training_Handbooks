@@ -24,41 +24,6 @@ graph TD
     style D fill:#0f172a,stroke:#22c55e,stroke-width:2px,color:#fff
 ```
 
-### Execution Options & Tool Tabs
-
-<div class="tool-tabs-container">
-    <div class="tool-tabs">
-        <button class="tab-btn active" data-tab="galaxy">Aqua Galaxy (No-Code GUI)</button>
-        <button class="tab-btn" data-tab="r-code">R Trend Script</button>
-        <button class="tab-btn" data-tab="python-code">Python API</button>
-    </div>
-    <div class="tab-content active" data-tab-content="galaxy">
-        <p>Run the <strong>Oslofjord River-Marine Trend Analysis Tool</strong> in Aqua Galaxy. Input Glomma River discharge time series and FerryBox sensor transects to calculate storm plume dispersion.</p>
-    </div>
-    <div class="tab-content" data-tab-content="r-code">
-        <pre><code class="language-r"># Calculate Glomma river flux and FerryBox marine chemistry trends
-library(tidyverse)
-
-river_discharge <- read_csv("glomma_river_flux.csv")
-ferrybox_data <- read_csv("oslofjord_ferrybox.csv")
-
-# Filter storm event window
-storm_window <- filter(river_discharge, discharge_m3s > 1200)
-matched_marine <- inner_join(ferrybox_data, storm_window, by = "date")</code></pre>
-    </div>
-    <div class="tab-content" data-tab-content="python-code">
-        <pre><code class="language-python">import pandas as pd
-
-# Match FerryBox transect sensor readings with river storm events
-flux_df = pd.read_csv("glomma_river_flux.csv")
-ferry_df = pd.read_csv("oslofjord_ferrybox.csv")
-
-storm_events = flux_df[flux_df["discharge"] > 1200]
-merged_ds = pd.merge_asof(ferry_df.sort_values("time"), storm_events.sort_values("time"), on="time")
-print(merged_ds.head())</code></pre>
-    </div>
-</div>
-
 ### Processing Stages
 
 1. **Calculate River Fluxes:**

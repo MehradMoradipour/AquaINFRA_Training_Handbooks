@@ -24,35 +24,6 @@ graph TD
     style D fill:#0f172a,stroke:#22c55e,stroke-width:2px,color:#fff
 ```
 
-### Execution Options & Tool Tabs
-
-<div class="tool-tabs-container">
-    <div class="tool-tabs">
-        <button class="tab-btn active" data-tab="galaxy">Aqua Galaxy (No-Code GUI)</button>
-        <button class="tab-btn" data-tab="r-code">R Analysis Script</button>
-        <button class="tab-btn" data-tab="python-code">Python EO API</button>
-    </div>
-    <div class="tab-content active" data-tab-content="galaxy">
-        <p>Run the <strong>Optical Water Type Classification Tool</strong> in Aqua Galaxy. Select satellite NetCDF/GeoTIFF reflectance input files and set the classification confidence threshold.</p>
-    </div>
-    <div class="tab-content" data-tab-content="r-code">
-        <pre><code class="language-r"># Classify Optical Water Types from remote sensing reflectance
-library(raster)
-
-reflectance_data <- stack("sentinel3_olci_rrs.nc")
-owt_probabilities <- calc(reflectance_data, fun = classify_owt)
-plot(owt_probabilities)</code></pre>
-    </div>
-    <div class="tab-content" data-tab-content="python-code">
-        <pre><code class="language-python">import xarray as xr
-
-# Load EO satellite reflectance data & execute OWT classification
-ds = xr.open_dataset("sentinel3_olci_rrs.nc")
-owt_classes = ds["Rrs"].groupby("time").map(classify_optical_water_type)
-print(owt_classes)</code></pre>
-    </div>
-</div>
-
 ### Processing Stages
 
 The analytical pipeline is broken down into four core steps:
