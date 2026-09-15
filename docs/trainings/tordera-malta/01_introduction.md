@@ -19,7 +19,7 @@ We explore this through two parallel case studies:
 1. **The Tordera River (Spain):** Focusing on surface-level extreme events, specifically how flash floods transport vast quantities of sediment and nutrients into the sea.
 2. **The Maltese Islands (Malta):** Focusing on the hidden subterranean connection, specifically submarine groundwater discharge (SGD) and the threat of saltwater intrusion into fragile coastal aquifers.
 
-<figure class="diagram diagram--svg">
+<figure class="diagram diagram--svg diagram--svg--w860">
 <div class="figure-scroll">
 <svg viewBox="0 0 860 420" role="img" aria-labelledby="tor-title tor-desc">
   <title id="tor-title">Two land-sea pathways: Tordera flash floods and Maltese groundwater discharge</title>
@@ -84,11 +84,11 @@ We explore this through two parallel case studies:
 
     <!-- Fresh groundwater moving seaward -->
     <path d="M 66 300 Q 150 300 236 326" fill="none" stroke="#38bdf8" stroke-width="4" marker-end="url(#torArrowSky)"/>
-    <text x="140" y="286" class="fig-label fig-accent-sky" text-anchor="middle">Fresh groundwater</text>
+    <text x="152" y="286" class="fig-label fig-accent-sky" text-anchor="middle">Fresh groundwater</text>
 
     <!-- Saltwater wedge pushing inland -->
     <path d="M 372 350 Q 250 366 176 348" fill="none" stroke="#f87171" stroke-width="4" marker-end="url(#torArrowRose)"/>
-    <text x="268" y="390" class="fig-label fig-accent-rose" text-anchor="middle">Saltwater intrusion</text>
+    <text x="228" y="390" class="fig-label fig-accent-rose" text-anchor="middle">Saltwater intrusion</text>
 
     <text x="120" y="256" class="fig-note" text-anchor="middle">Permeable carbonate rock</text>
     <text x="336" y="256" class="fig-sub" text-anchor="middle">Coastal sea</text>

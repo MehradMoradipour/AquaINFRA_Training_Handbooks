@@ -603,12 +603,90 @@ tr:hover {
     vertical-align: top;
 }
 
-/* Let the browser auto-distribute column widths, prevent breaking first column */
+/* Label column stays compact; the detail column takes the room it needs */
 .table-wrapper th:first-child,
 .table-wrapper td:first-child {
-    width: auto;
-    min-width: 120px;
-    white-space: nowrap;
+    width: 28%;
+    min-width: 110px;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+/* Phones: widen the table towards the screen edge and let every cell wrap */
+@media (max-width: 640px) {
+    .table-wrapper {
+        width: calc(100% + 36px);
+        margin-left: -18px;
+        margin-right: -18px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .table-wrapper th:first-child,
+    .table-wrapper td:first-child {
+        width: 34%;
+        min-width: 0;
+    }
+
+    .table-wrapper table {
+        font-size: 0.8rem;
+    }
+
+    .table-wrapper td,
+    .table-wrapper th {
+        padding: 0.45rem 0.5rem;
+        overflow-wrap: break-word;
+        word-break: normal;
+    }
+}
+
+/* Phones: tables of three or more columns stack into label/value rows.
+   The labels come from responsive-tables.js; without it they stay tables. */
+@media (max-width: 560px) {
+    .table-wrapper .table--stackable thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    .table-wrapper .table--stackable,
+    .table-wrapper .table--stackable tbody,
+    .table-wrapper .table--stackable tr,
+    .table-wrapper .table--stackable td {
+        display: block;
+        width: auto;
+    }
+
+    .table-wrapper .table--stackable tr {
+        padding: 0.65rem 0;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+    .table-wrapper .table--stackable tr:last-child {
+        border-bottom: none;
+    }
+
+    .table-wrapper .table--stackable td {
+        display: grid;
+        grid-template-columns: 34% 1fr;
+        gap: 0.75rem;
+        border: none;
+        padding: 0.3rem 0.75rem;
+    }
+
+    .table-wrapper .table--stackable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--aqua-blue);
+    }
+
+    .table-wrapper .table--stackable td:first-child {
+        width: auto;
+    }
 }
 
 /* Small Screen Content Spacing */

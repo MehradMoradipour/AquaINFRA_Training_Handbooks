@@ -27,7 +27,7 @@ The Helsinki Commission (HELCOM) is an intergovernmental organization dedicated 
 
 To achieve this, the AquaINFRA project applies the **DAPSIM** framework (Drivers, Activities, Pressures, States, Impacts, Measures), connecting societal drivers to marine impacts and evaluating the success of implemented policies.
 
-<figure class="diagram diagram--svg">
+<figure class="diagram diagram--svg diagram--svg--w620">
 <div class="figure-scroll">
 <svg viewBox="0 0 620 640" role="img" aria-labelledby="hel-title hel-desc">
   <title id="hel-title">The DAPSIM cycle applied to the Baltic Sea</title>

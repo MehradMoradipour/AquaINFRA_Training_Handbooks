@@ -81,8 +81,8 @@ To overcome this, the HEREON use case leverages Earth Observation (EO) data to a
 
   <!-- Classified water types -->
   <text x="200" y="336" class="fig-label fig-accent-sky" text-anchor="middle">OWT 1: clear</text>
-  <text x="400" y="352" class="fig-label fig-accent-lime" text-anchor="middle">OWT 2: turbid / algae</text>
-  <text x="600" y="330" class="fig-label fig-accent-amber" text-anchor="middle">OWT 3: CDOM-rich</text>
+  <text x="356" y="352" class="fig-label fig-accent-lime" text-anchor="middle">OWT 2: turbid / algae</text>
+  <text x="648" y="330" class="fig-label fig-accent-amber" text-anchor="middle">OWT 3: CDOM-rich</text>
 </svg>
 </div>
 <figcaption>Figure 2: Earth Observation satellites capture multi-spectral reflectance, classifying the sea into distinct Optical Water Types, validated by in-situ buoys.</figcaption>

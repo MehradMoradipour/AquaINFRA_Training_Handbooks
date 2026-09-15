@@ -37,7 +37,7 @@ As climate change alters weather patterns, extreme events such as intense storms
     </linearGradient>
   </defs>
 
-  <text x="400" y="36" class="fig-title" text-anchor="middle">Tracking an extreme event from river to fjord</text>
+  <text x="400" y="36" class="fig-title" text-anchor="middle">Tracking a storm event into the fjord</text>
 
   <!-- Fjord -->
   <rect x="0" y="222" width="800" height="138" fill="url(#oslSea)"/>
@@ -55,8 +55,8 @@ As climate change alters weather patterns, extreme events such as intense storms
 
   <g transform="translate(78, 202)">
     <circle cx="0" cy="0" r="11" fill="#10b981" stroke="#0f172a" stroke-width="3"/>
-    <text x="0" y="40" class="fig-label" text-anchor="middle">River sensors</text>
-    <text x="0" y="60" class="fig-sub" text-anchor="middle">Glomma discharge</text>
+    <text x="26" y="40" class="fig-label" text-anchor="middle">River sensors</text>
+    <text x="26" y="60" class="fig-sub" text-anchor="middle">Glomma discharge</text>
   </g>
 
   <!-- Freshwater plume -->
