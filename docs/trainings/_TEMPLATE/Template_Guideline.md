@@ -108,19 +108,6 @@ The handbook uses a centralised design system. **Do not use inline styles** beyo
 - **Callouts**: GitHub-style alerts (`> [!NOTE]` / `> [!TIP]` / `> [!WARNING]`) or `<div class="callout">` with optional `callout--warning` / `callout--info`.
 - **Tables**: wrap in `<div class="table-wrapper">` for responsive overflow.
 - **Diagrams**: Mermaid is enabled - use fenced ` ```mermaid ` blocks.
-- **Interactive Tool Tabs**: Allow learners to toggle between Aqua Galaxy, R, and Python:
-  ```html
-  <div class="tool-tabs-container">
-    <div class="tool-tabs">
-      <button class="tab-btn active" data-tab="galaxy">Aqua Galaxy (GUI)</button>
-      <button class="tab-btn" data-tab="r-code">R Package</button>
-      <button class="tab-btn" data-tab="python-code">Python API</button>
-    </div>
-    <div class="tab-content active" data-tab-content="galaxy">...</div>
-    <div class="tab-content" data-tab-content="r-code">...</div>
-    <div class="tab-content" data-tab-content="python-code">...</div>
-  </div>
-  ```
 - **Knowledge Checks (Self-Assessment)**:
   ```html
   <details class="knowledge-check">
