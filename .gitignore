@@ -41,3 +41,6 @@ CLAUDE.md
 unpacked_docx/
 image_mapping.txt
 extracted_usecases.txt
+
+# Local AI agent rules (not part of the published handbook)
+.claude/
