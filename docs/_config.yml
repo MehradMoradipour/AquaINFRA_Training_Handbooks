@@ -21,12 +21,11 @@ description: Companion handbook to the AquaINFRA YouTube trainings. Find data, r
 # cache_dir: ../build/.jekyll-cache
 
 # GitHub Pages Configuration
-# baseurl must match the GitHub repository name so that asset paths resolve
-# correctly on GitHub Pages (e.g. /AquaINFRA_Training_Handbooks/assets/...).
-# When running locally, override this with: jekyll serve --baseurl ""
-# If you fork and rename the repo, update this value to your new repo name.
-baseurl: "/AquaINFRA_Training_Handbooks"
-url: "https://mehradmoradipour.github.io"
+# This site uses dynamic "Relative Root" logic: every asset and link is
+# resolved from the page's own depth, so NO CHANGES ARE REQUIRED HERE for any
+# repository name, fork, or subfolder setup.
+baseurl: ""
+url: ""
 
 # Features
 mermaid:

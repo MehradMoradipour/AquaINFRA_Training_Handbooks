@@ -6,7 +6,7 @@ This repository provides the high-performance, mobile-responsive source code for
 
 ## Live Handbook
 Access the interactive training modules here:  
-**[mehradmoradipour.github.io/AquaINFRA_Training_Handbooks](https://mehradmoradipour.github.io/AquaINFRA_Training_Handbooks/)**
+**[smatmir.github.io/AquaINFRA_Handbook](https://smatmir.github.io/AquaINFRA_Handbook/)**
 
 ## Project Scope
 The handbook covers the full research lifecycle within the project:
@@ -38,9 +38,9 @@ The handbook covers the full research lifecycle within the project:
 ## Core Team & Leadership
 The AquaINFRA Training Handbook are developed and maintained at **[Hochschule Bochum](https://www.hochschule-bochum.de/fbg/team-und-labore/kessler/)** within the AquaINFRA project team.
 
-- **[Prof. Dr. Carsten Keßler](https://github.com/crstn)** — Team Lead & Principal Investigator.
-- **[Sadra Matmir](https://github.com/smatmir)** — Project Supervisor & Developer.
-- **[Mehrad Moradipour](https://github.com/Mehrad1994)** — Developer.
+- **[Prof. Dr. Carsten Keßler](https://github.com/crstn)** — Team Lead
+- **[Sadra Matmir](https://github.com/smatmir)** — Concept Designer & Developer
+- **[Mehrad Moradipour](https://github.com/Mehrad1994)** — Developer
 
 ---
 *For official project news and research goals, visit [aquainfra.eu](https://aquainfra.eu).*
