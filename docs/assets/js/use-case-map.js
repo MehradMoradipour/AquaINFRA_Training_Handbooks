@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'elbe',
             title: 'Elbe Estuary',
             region: 'North Sea',
-            coords: [53.55, 9.70],
+            places: [{ city: 'Hamburg', coords: [53.5511, 9.9937] }],
             desc: 'River-to-sea transport dynamics, nutrient fluxes, and estuarine hypoxia in German Bight.',
             url: './trainings/elbe/'
         },
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'gulf-of-finland',
             title: 'Vantaanjoki & Gulf of Finland',
             region: 'Baltic Sea',
-            coords: [60.17, 24.94],
+            places: [{ city: 'Helsinki', coords: [60.1699, 24.9384] }],
             desc: 'Nutrient runoff from Vantaanjoki urban catchment into the Gulf of Finland using FerryBox data.',
             url: './trainings/gulf-of-finland/'
         },
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'gulf-of-riga',
             title: 'Service by the Gulf of Riga',
             region: 'Baltic Sea',
-            coords: [57.00, 24.00],
+            places: [{ city: 'Riga', coords: [56.9496, 24.1052] }],
             desc: 'Daugava river discharges, Secchi depth, and HELCOM subbasins for Mann-Kendall trend detection.',
             url: './trainings/gulf-of-riga/'
         },
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'helcom',
             title: 'HELCOM Baltic Sea',
             region: 'Baltic Sea',
-            coords: [58.50, 19.50],
+            places: [{ city: 'Helsinki', coords: [60.1699, 24.9384] }],
             desc: 'Evaluates HELCOM Baltic Sea Action Plan effectiveness on water clarity & nutrient reduction.',
             url: './trainings/helcom/'
         },
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'hereon',
             title: 'HEREON Satellite & OWT',
             region: 'North Sea',
-            coords: [54.20, 7.80],
+            places: [{ city: 'Geesthacht', coords: [53.4264, 10.3703] }],
             desc: 'Integrates Sentinel-3 OLCI satellite remote sensing with FerryBox in-situ data for OWT classification.',
             url: './trainings/hereon/'
         },
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'oslofjord',
             title: 'Oslofjord & Glomma River',
             region: 'North Sea',
-            coords: [59.50, 10.60],
+            places: [{ city: 'Oslo', coords: [59.9139, 10.7522] }],
             desc: 'Tracks Glomma river nutrient discharge and coastal FerryBox transects during extreme storm events.',
             url: './trainings/oslofjord/'
         },
@@ -117,7 +117,10 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'tordera-malta',
             title: 'Tordera Basin & Malta',
             region: 'Mediterranean Sea',
-            coords: [41.70, 2.75],
+            places: [
+                { city: 'Tordera', coords: [41.6991, 2.7195] },
+                { city: 'Valletta', coords: [35.8989, 14.5146] }
+            ],
             desc: 'Flash floods in Tordera catchment and seawater intrusion in Maltese coastal aquifers.',
             url: './trainings/tordera-malta/'
         },
@@ -125,23 +128,49 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 'pan-european-use-case',
             title: 'Pan-European Biodiversity',
             region: 'Pan-European',
-            coords: [50.00, 15.00],
+            places: [{ city: 'Vienna', coords: [48.2082, 16.3738] }],
             desc: 'Harmonises freshwater occurrence data across European river networks via specleanr.',
             url: './trainings/pan-european-use-case/'
         }
     ];
 
-    const markersMap = {};
+    const markersMap = {};   // use-case id -> list of markers (one per place)
     const latLngs = [];
     let popupTimer = null;
     let activeId = null;
 
-    function createCustomIcon(isHighlighted) {
+    // offsetX shifts a pin sideways (in pixels) when several sit on the same spot
+    function createCustomIcon(isHighlighted, offsetX) {
         return L.divIcon({
             className: 'custom-map-pin-wrapper',
             html: `<div class="custom-map-pin ${isHighlighted ? 'custom-map-pin--active' : ''}"></div>`,
             iconSize: [22, 22],
-            iconAnchor: [11, 11]
+            iconAnchor: [11 - (offsetX || 0), 11]
+        });
+    }
+
+    function setPin(marker, isHighlighted) {
+        marker.options.pinActive = isHighlighted;
+        marker.setIcon(createCustomIcon(isHighlighted, marker.options.pinOffset));
+    }
+
+    // Pins closer than this on screen (e.g. two use cases in Helsinki) are
+    // fanned out side by side so each stays visible and clickable.
+    const PIN_SPACING = 18;
+    function spreadOverlappingPins() {
+        const all = [];
+        Object.values(markersMap).forEach(list => list.forEach(m => all.push(m)));
+        const groups = [];
+        all.forEach(m => {
+            const pt = map.latLngToLayerPoint(m.getLatLng());
+            const group = groups.find(g => g.pt.distanceTo(pt) < PIN_SPACING);
+            if (group) group.items.push(m); else groups.push({ pt: pt, items: [m] });
+        });
+        groups.forEach(g => {
+            g.items.forEach((m, i) => {
+                m.options.pinOffset = (i - (g.items.length - 1) / 2) * PIN_SPACING;
+                m.setIcon(createCustomIcon(!!m.options.pinActive, m.options.pinOffset));
+            });
         });
     }
 
@@ -150,15 +179,14 @@ document.addEventListener('DOMContentLoaded', function () {
         
         // Deactivate previous
         if (activeId && markersMap[activeId]) {
-            markersMap[activeId].setIcon(createCustomIcon(false));
+            markersMap[activeId].forEach(m => setPin(m, false));
             highlightCard(activeId, false);
         }
 
         activeId = id;
         if (id && markersMap[id]) {
-            const marker = markersMap[id];
-            marker.setIcon(createCustomIcon(true));
-            marker.openPopup();
+            markersMap[id].forEach(m => setPin(m, true));
+            markersMap[id][0].openPopup();
             highlightCard(id, true);
         }
     }
@@ -166,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function deactivateUseCase(id) {
         if (activeId === id) {
             if (markersMap[id]) {
-                markersMap[id].setIcon(createCustomIcon(false));
+                markersMap[id].forEach(m => setPin(m, false));
             }
             highlightCard(id, false);
             activeId = null;
@@ -175,24 +203,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 3. Create Markers
     useCaseLocations.forEach(uc => {
-        latLngs.push(uc.coords);
+      markersMap[uc.id] = [];
+      uc.places.forEach(place => {
+        latLngs.push(place.coords);
 
-        const marker = L.marker(uc.coords, {
+        const marker = L.marker(place.coords, {
             icon: createCustomIcon(false),
-            title: uc.title
+            title: uc.title + ' (' + place.city + ')'
         }).addTo(map);
 
         const popupContent = `
             <div class="map-popup-card">
                 <span class="map-popup-badge map-popup-badge--${uc.region.toLowerCase().replace(/\s+/g, '-')}">${uc.region}</span>
                 <h4 class="map-popup-title">${uc.title}</h4>
+                <p class="map-popup-desc"><strong>${place.city}</strong></p>
                 <p class="map-popup-desc">${uc.desc}</p>
                 <a href="${uc.url}" class="map-popup-link">Explore Course &rarr;</a>
             </div>
         `;
 
         marker.bindPopup(popupContent, { maxWidth: 230, closeButton: true });
-        markersMap[uc.id] = marker;
+        markersMap[uc.id].push(marker);
 
         // Desktop Mouseover & Touch Click
         marker.on('mouseover click touchstart', function (e) {
@@ -209,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }, 300);
         });
+      });
     });
 
     // Automatically fit map bounds to show ALL pins in frame
@@ -216,6 +248,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const bounds = L.latLngBounds(latLngs);
         map.fitBounds(bounds, { padding: [35, 35] });
     }
+    spreadOverlappingPins();
+    map.on('zoomend', spreadOverlappingPins);
 
     // 4. Touchscreen & Desktop Card Interaction
     const cards = document.querySelectorAll('.use-case-card');
