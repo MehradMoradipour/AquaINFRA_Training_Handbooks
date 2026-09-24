@@ -4,21 +4,64 @@
  */
 document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('use-case-map');
-    if (!mapContainer || typeof L === 'undefined') return;
+    if (!mapContainer) return;
+
+    // Leaflet comes from a CDN; if it is blocked, say so instead of leaving an empty box
+    if (typeof L === 'undefined') {
+        mapContainer.classList.add('use-case-map--unavailable');
+        mapContainer.textContent = 'The map could not be loaded. The use cases are listed on this page.';
+        return;
+    }
 
     // 1. Initialize Leaflet Map
     const map = L.map('use-case-map', {
         zoomControl: true,
         scrollWheelZoom: false,
-        attributionControl: false,
+        attributionControl: true,
         closePopupOnClick: false
     });
+    map.attributionControl.setPrefix(false);
 
-    // Sleek CartoDB Positron light tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        subdomains: 'abcd',
-        maxZoom: 18
-    }).addTo(map);
+    // Basemaps that need no API key, tried in order. If the first provider
+    // starts failing (rate limit, policy change, outage), switch to the next.
+    const basemaps = [
+        {
+            url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            options: {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }
+        },
+        {
+            url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+            options: {
+                subdomains: 'abcd',
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            }
+        }
+    ];
+
+    let basemapIndex = 0;
+    let tileErrors = 0;
+    let baseLayer = null;
+
+    function useBasemap(index) {
+        if (baseLayer) map.removeLayer(baseLayer);
+        tileErrors = 0;
+        const source = basemaps[index];
+        baseLayer = L.tileLayer(source.url, source.options);
+        baseLayer.on('tileerror', function () {
+            tileErrors += 1;
+            if (tileErrors >= 3 && basemapIndex < basemaps.length - 1) {
+                basemapIndex += 1;
+                useBasemap(basemapIndex);
+            }
+        });
+        baseLayer.addTo(map);
+    }
+
+    useBasemap(basemapIndex);
 
     // 2. Define Use Case Locations
     const useCaseLocations = [

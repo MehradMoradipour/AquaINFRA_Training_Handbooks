@@ -1355,3 +1355,15 @@ pre:has(code.language-mermaid) {
     max-width: 100%;
     overflow-x: auto;
 }
+
+/* Shown in place of the map when Leaflet cannot be loaded */
+.use-case-map--unavailable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: var(--gray-100);
+}
